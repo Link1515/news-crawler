@@ -35,7 +35,7 @@ class BbcCrawlerService
                     new NewsDTO(title: $title, image: $image, url: 'https://www.bbc.com' . $url)
                 );
             });
-        $result = array_slice($result, 0, 5);
+        $result = array_slice($result, 0, 6);
 
         return $result;
     }

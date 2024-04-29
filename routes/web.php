@@ -14,8 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/news/{newsId}', [NewsCrawlerController::class, 'index']);
+Route::get('/', [NewsCrawlerController::class, 'index']);

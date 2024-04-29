@@ -11,7 +11,7 @@ class NewsCrawlerController extends Controller
     {
     }
 
-    public function index(string $newsId)
+    public function index()
     {
         $newsList = [
             'BBC' => $this->bbcCrawlerService->crawlPopularList(),

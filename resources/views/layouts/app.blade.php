@@ -7,8 +7,8 @@
     <title>Document</title>
     @vite('resources/css/app.css')
 </head>
-<body>
-    <div class="container">
+<body class="bg-[#1b263a] text-[#9ba6ba]">
+    <div class="container py-10">
         @yield('content')
     </div>
 
