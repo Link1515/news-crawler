@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 
 
-class BbcCrawlerService
+class BbcCrawlerService implements NewCrawlerInterface
 {
     public function __construct(
         private readonly Client $httpClient,
