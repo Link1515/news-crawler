@@ -27,7 +27,7 @@ class TheReporterCrawlerService implements NewCrawlerInterface
         $crawler
             ->filter('#root > div > div > div:nth-child(2) > div > div > div > div > div > div > div')
             ->each(function (Crawler $node) use (&$result) {
-                $url = $node->filter('a')->attr('href');
+                $url = $node->filter('a')->link()->getUri();
                 $title = $node->filter('img')->attr('alt');
                 $image = $node->filter('img')->attr('src');
                 array_push(

@@ -22,17 +22,17 @@ class BbcCrawlerService implements NewCrawlerInterface
         $response = $this->httpClient->request('GET', 'https://www.bbc.com/zhongwen/trad');
         $html = $response->getBody()->getContents();
 
-        $crawler = new Crawler($html, );
+        $crawler = new Crawler($html, 'https://www.bbc.com');
         $result = [];
         $crawler
             ->filter('[aria-labelledby="Top-stories"] > div + div > ul > li')
             ->each(function (Crawler $node) use (&$result) {
-                $url = $node->filter('h3 a')->attr('href');
+                $url = $node->filter('h3 a')->link()->getUri();
                 $title = $node->filter('h3 a')->text();
                 $image = $node->filter('img')->attr('src');
                 array_push(
                     $result,
-                    new NewsDTO(title: $title, image: $image, url: 'https://www.bbc.com' . $url)
+                    new NewsDTO(title: $title, image: $image, url: $url)
                 );
             });
         $result = array_slice($result, 0, 6);
